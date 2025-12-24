@@ -1,6 +1,6 @@
 # Kotlin Clean Architecture Example
 
-[![Build and Test](https://github.com/jeremejazz/kotlin-clean-example/actions/workflows/build.yml/badge.svg)](https://github.com/jeremejazz/kotlin-clean-example/actions/workflows/build.yml)
+[![Build and Test](https://github.com/jeremejazz/kotlin-clean-example/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/jeremejazz/kotlin-clean-example/actions/workflows/build.yml)
 
 Clean Architecture implementation in Kotlin with a Phonebook CLI Application
 
