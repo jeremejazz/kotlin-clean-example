@@ -4,7 +4,7 @@ import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.Statement
 
-class DatabaseFactory {
+object DatabaseFactory {
 
     private val URL = "jdbc:sqlite:phonebook.db"
 
