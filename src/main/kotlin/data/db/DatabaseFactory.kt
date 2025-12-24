@@ -18,7 +18,7 @@ object DatabaseFactory {
             val statement: Statement = conn.createStatement()
             val sql = """
                 CREATE TABLE IF NOT EXISTS contacts(
-                    id INTEGER PRIMARY KEY AUTOINCREMENT
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL,
                     phone_number TEXT NOT NULL,
                     email TEXT

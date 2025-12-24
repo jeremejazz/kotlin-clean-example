@@ -1,16 +1,32 @@
 package me.jereme
 
+import me.jereme.data.db.DatabaseFactory
+import me.jereme.data.repository.ContactRepositoryImpl
+import me.jereme.domain.usecase.AddContact
+import me.jereme.domain.usecase.DeleteContact
+import me.jereme.domain.usecase.GetContacts
+import me.jereme.domain.usecase.UpdateContact
+import me.jereme.presentation.ConsoleUI
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+    DatabaseFactory.init()
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+    val contactRepository = ContactRepositoryImpl()
+
+    val addContact = AddContact(contactRepository)
+    val getContacts = GetContacts(contactRepository)
+    val updateContact = UpdateContact(contactRepository)
+    val deleteContact = DeleteContact(contactRepository)
+
+    val consoleUI = ConsoleUI(
+        addContact,
+        getContacts,
+        updateContact,
+        deleteContact
+    )
+
+    consoleUI.start()
+
 }
