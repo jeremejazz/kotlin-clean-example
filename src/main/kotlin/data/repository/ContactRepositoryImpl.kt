@@ -41,7 +41,6 @@ class ContactRepositoryImpl : ContactRepository {
     override fun getById(id: Int): Contact? {
         val sql = "SELECT * FROM contacts WHERE id = ?"
 
-
         DatabaseFactory.connect().use { conn ->
 
             val pstmt = conn.prepareStatement(sql)
@@ -57,15 +56,33 @@ class ContactRepositoryImpl : ContactRepository {
                 return contact
             }
         }
-        return null;
+        return null
     }
 
     override fun update(contact: Contact) {
-        TODO("Not yet implemented")
+
+        val sql = "UPDATE contacts SET name = ?, phone_number = ?, email = ? WHERE id = ?"
+
+        DatabaseFactory.connect().use { conn ->
+
+            val pstmt = conn.prepareStatement(sql)
+            pstmt.setString(1, contact.name)
+            pstmt.setString(2, contact.phoneNumber)
+            pstmt.setString(3, contact.email)
+            pstmt.setInt(4, contact.id)
+            pstmt.executeUpdate()
+        }
+
     }
 
     override fun delete(id: Int) {
-        TODO("Not yet implemented")
+        val sql = "DELETE FROM contacts WHERE id = ?"
+
+        DatabaseFactory.connect().use { conn ->
+            val pstmt = conn.prepareStatement(sql)
+            pstmt.setInt(1, id)
+            pstmt.executeUpdate()
+        }
     }
 
 }
