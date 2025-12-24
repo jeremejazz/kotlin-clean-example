@@ -15,7 +15,7 @@ class GetContacts(private val repository: ContactRepository){
 }
 
 class GetContact(private val repository: ContactRepository){
-    operator fun invoke(id: Int): Contact = repository.getById(id)
+    operator fun invoke(id: Int): Contact? = repository.getById(id)
 }
 
 class UpdateContact(private val repository: ContactRepository){
